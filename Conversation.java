@@ -12,6 +12,7 @@ class Conversation {
     int a;
     System.out.print("How many round?");
     int i = keyboard.nextInt();
+    String[] transcript = new String[2 * i];
     a = i;
     while(i !=0) //loop function to excute number of rounds for the conversation
       {
@@ -19,52 +20,110 @@ class Conversation {
           {
             System.out.println("Hi there!  What's on your mind?");
             reply = in.nextLine();
-            String word = reply.replace("I", "You");
-            String word_1 = word.replace("me", "you");
-            String word_2 = word_1.replace("Me", "You");
-            String word_3 = word_2.replace("am", "are");
-            String word_4 = word_3.replace("'m", "'re");
-            String word_5 = word_4.replace("your", "my");
-            String word_6 = word_5.replace("Your", "My");
-            String word_7 = word_6.replace("you", "I");
-            String word_8 = word_7.replace("You", "I");
-            String word_9 = word_8.replace("my", "your");
-            String word_10 = word_9.replace("My", "Your");//replaces and mirrors some words. Has errors. Need to use loop function
-            
-            System.out.println(word_10 +"?");
+            StringBuilder result = new StringBuilder(); //Used for modifying the string value
+            String[] words = reply.split(" ");
+            boolean first = true;
+            for (String word : words) {
+                if (first) {
+                    first = false;
+                }
+                else {
+                    result.append(' ');
+                }
+                switch (word) {
+                    case "I":
+                        word = "you";
+                        break;
+                    case "I'm":
+                        word = "You're";
+                        break;    
+                    case "me":
+                        word = "you";
+                        break;
+                    case "am":
+                        word = "are";
+                        break;
+                    case "you || You":
+                        word = "I";
+                        break;
+                    case "my":
+                        word = "your";
+                        break;
+                    case "My":
+                        word = "Your";
+                        break;    
+                    case "your":
+                        word = "my";
+                        break;
+                    case "Your":
+                        word = "My";
+                        break;
+                    // used to change words while replying back    
+                    // reference from https://stackoverflow.com/questions/71505537/java-chatbot-mirroring-and-canned-responses
+
+                }
+                result.append(word);
           }
-        i --;  
+         System.out.println(result +"?"); 
+        } 
+         i --;  
+         
         if(i==1)
           {
             reply = in.nextLine();
             System.out.println("Mmm-hm.");
             System.out.println("Cya!");
+            System.exit(0);
           }
         else
           {
             reply = in.nextLine();
-            String word = reply.replace("I", "You");
-            String word_1 = word.replace("me", "you");
-            String word_2 = word_1.replace("Me", "You");
-            String word_3 = word_2.replace("am", "are");
-            String word_4 = word_3.replace("'m", "'re");
-            String word_5 = word_4.replace("your", "my");
-            String word_6 = word_5.replace("Your", "My");
-            String word_7 = word_6.replace("you", "I");
-            String word_8 = word_7.replace("You", "I");
-            String word_9 = word_8.replace("my", "your");
-            String word_10 = word_9.replace("My", "Your");//replaces and mirrors some words. Has errors. Need to use loop function
-            System.out.println(word_10 +"?");
-          }
+            StringBuilder result2 = new StringBuilder();
+            String[] words2 = reply.split(" ");
+            boolean first2 = true;
+            for (String word2 : words2) {
+                if (first2) {
+                    first2 = false;
+                }
+                else {
+                    result2.append(' ');
+                }
+                switch (word2) {
+                    case "I":
+                        word2 = "you";
+                        break;
+                    case "I'm":
+                        word2 = "You're";
+                        break;    
+                    case "me":
+                        word2 = "you";
+                        break;
+                    case "am":
+                        word2 = "are";
+                        break;
+                    case "you || You":
+                        word2 = "I";
+                        break;
+                    case "my":
+                        word2 = "your";
+                        break;
+                    case "My":
+                        word2 = "Your";
+                        break;    
+                    case "your":
+                        word2 = "my";
+                        break;
+                    case "Your":
+                        word2 = "My";
+                        break;
 
-      } 
-     
-
-
-      
-
-
+                }
+                result2.append(word2);
+            }
+          System.out.println(result2 +"?");
+         } 
   }
-
+ }
 }
+
 
